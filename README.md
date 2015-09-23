@@ -13,7 +13,7 @@ This is the game of tic tac toe.
 1. open a command terminal
 2. `git clone https://github.com/janicelaset/tic-tac-toe.git`
 3. `cd tic-tac-toe` to navigate to the project directory
-4. open tic-tac-toe.html to launch the application
+4. open index.html to launch the application
 
 ## Technologies Used
 
