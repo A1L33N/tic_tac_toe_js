@@ -60,7 +60,7 @@ $(document).ready(function() {
       player1Name,
       player2Name,
       currentPlayer;
-    
+
   changeCursor();
 
   $("#PVP").on("click", function() {
@@ -76,8 +76,8 @@ $(document).ready(function() {
   });
 
   $("#player-names").on("click", function() {
-    player1Name = $("#player1").val()  
-    player2Name = $("#player2").val() 
+    player1Name = $("#player1").val()
+    player2Name = $("#player2").val()
     if (player1Name && player2Name) {
       $("#pick-name").hide();
       $("#game-table").fadeIn(500);
@@ -144,7 +144,7 @@ $(document).ready(function() {
     turns++;
     changeCursor();
     if (playerTurn.win() === true) {
-      $('span#winner').text('Congrats! Player ' + playerTurn.mark + ' wins!');
+      $('span#winner').text(playerTurn.mark + ' wins!');
       renderWinGame()
     } else if (turns === 9) {
       tieGame();
@@ -161,16 +161,21 @@ $(document).ready(function() {
       playerTurn.move(spaceId);
       var index = availableSpaces.indexOf(spaceId);
       availableSpaces.splice(index, 1);
-      if (playerTurn.mark === "X") { 
-        currentPlayer = player1Name; 
-      } else { 
-        currentPlayer = player2Name; 
+      if (playerTurn.mark === "X") {
+        currentPlayer = player1Name;
+      } else {
+        currentPlayer = player2Name;
       }
       turns++;
       changeCursor();
       if (playerTurn.win() === true) {
+        if (computer === true) {
+            $('span#winner').text(playerTurn.mark + ' wins!');
+            renderWinGame();
+        } else {
         $('span#winner').text('Congrats! ' + currentPlayer + ' wins!');
         renderWinGame()
+      }
       } else if (turns === 9) {
         tieGame();
       } else {
